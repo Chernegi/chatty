@@ -3,27 +3,34 @@
 \
 **Hope you enjoy it**
 
-## Requirelents:
+
+## There are two options how to run the application locally
+
+## Option 1
+### Requirements:
 
 OS: MacOS, Lunix-based systems \
 python = ">=3.9" \
 pip \
 ollama  (details: *https://ollama.ai/*)
 
-## Local launch
+### Setup and run locally
 ~~~
 # local setup:
 sh app_setup.sh # wait untill mistral model to be pulled
 
-# after setup, there should be a mistal model in the output list while running:
+# after setup is completed
+# Mistal model should be listed using command:
 ollama list
 
 # local run:
 poetry run streamlit run --client.toolbarMode minimal app.py
 ~~~
 
-
-## Local launch using docker compose
+## Option 2
+### Run locally using docker compose
+more details on how to run ollama in  a Docker container by *https://hub.docker.com/r/ollama/ollama/*
 ~~~
+# run:
 docker-compose --compatibility up
 ~~~
