@@ -45,7 +45,6 @@ def page():
     if len(st.session_state) == 0:
         st.session_state["messages"] = []
         st.session_state["assistant"] = Chatty()
-
     st.session_state["ingestion_spinner"] = st.empty()
     display_messages()
     st.text_input(" ", key="user_input", on_change=process_input)

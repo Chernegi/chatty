@@ -162,9 +162,4 @@ cython_debug/
 
 faiss_index/
 
-ollama/
 config.yml
-Dockerfile
-docker-compose.yml
-requirements.txt
-

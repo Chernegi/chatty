@@ -1,3 +1,4 @@
+import os
 from langchain.chat_models import ChatOllama
 from langchain.prompts import PromptTemplate
 from langchain.schema.output_parser import StrOutputParser
@@ -7,8 +8,10 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 class Chatty:
     def __init__(self):
-        self.model = ChatOllama(model="mistral")
-
+        self.model = ChatOllama(base_url=os.getenv['OLLAMA_URL', "http://ollamahost:11434"]
+                                , model="mistral"
+                                , num_thread=os.getenv('NUM_THREADS')
+                                )
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1024, chunk_overlap=100
         )
