@@ -24,7 +24,7 @@ sh app_setup.sh # wait untill mistral model to be pulled
 ollama list
 
 # local run:
-poetry run streamlit run --client.toolbarMode minimal app.py
+export GIN_MODE=release & poetry run streamlit run --client.toolbarMode minimal app.py
 ~~~
 
 ## Option 2
