@@ -1,14 +1,23 @@
-FROM python:3.9-slim
+FROM chernegi/ollama-mistral:v0.1.0
 WORKDIR /app
 
-RUN pip install --upgrade pip
-RUN apt-get update && apt-get install -y \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update
+RUN apt-get install software-properties-common -y \
+&& rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt /app/requirements.txt
-RUN pip install -r /app/requirements.txt
+RUN apt-get update
+RUN apt-get -y install python3.10
+RUN apt-get -y install python3-pip
+RUN pip install --upgrade pip
+RUN pip install poetry
+
+COPY poetry.lock /app/poetry.lock
+COPY pyproject.toml /app/pyproject.toml
+RUN poetry --no-cache install --no-root
 COPY app.py /app/app.py
 COPY chatty.py /app/chatty.py
 
+ENV GIN_MODE release
+
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
-ENTRYPOINT streamlit run --client.toolbarMode minimal /app/app.py
+ENTRYPOINT ollama serve & poetry run streamlit run --client.toolbarMode minimal /app/app.py

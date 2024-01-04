@@ -24,7 +24,7 @@ def process_input():
             agent_text = st.session_state["assistant"].ask(user_text)
 
         st.session_state["messages"].append((user_text, True))
-        st.session_state["messages"].append((agent_text, False))
+        st.session_state["messages"].append((agent_text, False))    
 
 
 def page():
