@@ -3,21 +3,7 @@ from streamlit_chat import message
 
 from chatty import Chatty
 
-st.header(
-    # "Sir Shakespeare's bot invites you to chat :sunglasses:"
-    "Sir Shakespeare's bot invites you to chat",
-    divider="rainbow",
-)
-st.markdown(
-    """
-*Hark! Pray, dost thou* \n
-*indulge in a moment of discourse?* \n
-*Let our words dance* \n
-*like fair maidens and gallant knights* \n
-*upon the stage of conversation.* \n
-*What say thee?* \n
-"""
-)
+st.set_page_config(page_title="Chatty")
 
 
 def display_messages():
@@ -34,7 +20,7 @@ def process_input():
         user_text = st.session_state["user_input"].strip()
         with st.session_state["thinking_spinner"], st.spinner(
             f"I muse upon this"
-        ):
+            ):
             agent_text = st.session_state["assistant"].ask(user_text)
 
         st.session_state["messages"].append((user_text, True))
@@ -42,6 +28,22 @@ def process_input():
 
 
 def page():
+    st.header(
+        # "Sir Shakespeare's bot invites you to chat :sunglasses:"
+        "Sir Shakespeare's bot invites you to chat",
+        divider="rainbow",
+    )
+    st.markdown(
+        """
+        *Hark! Pray, dost thou* \n
+        *indulge in a moment of discourse?* \n
+        *Let our words dance* \n
+        *like fair maidens and gallant knights* \n
+        *upon the stage of conversation.* \n
+        *What say thee?* \n
+        """
+    )
+
     if len(st.session_state) == 0:
         st.session_state["messages"] = []
         st.session_state["assistant"] = Chatty()

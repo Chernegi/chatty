@@ -8,10 +8,11 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 class Chatty:
     def __init__(self):
-        self.model = ChatOllama(base_url=os.getenv('OLLAMA_URL', "http://localhost:11434")
-                                , model="mistral"
-                                , num_thread=os.getenv('NUM_THREADS')
-                                )
+        self.model = ChatOllama(
+            base_url=os.getenv("OLLAMA_URL", "http://localhost:11434"),
+            model="mistral",
+            num_thread=os.getenv("NUM_THREADS"),
+        )
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1024, chunk_overlap=100
         )
