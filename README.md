@@ -10,9 +10,9 @@
 ### Requirements:
 
 OS: MacOS, Lunix-based systems \
+curl
 python = ">=3.9" \
-pip \
-ollama  (details: *https://ollama.ai/*)
+pip
 
 ### Setup and run locally
 ~~~
@@ -24,7 +24,8 @@ sh app_setup.sh # wait untill mistral model to be pulled
 ollama list
 
 # local run:
-export GIN_MODE=release & poetry run streamlit run --client.toolbarMode minimal app.py
+export GIN_MODE=release &
+ poetry run streamlit run --client.toolbarMode minimal app.py
 ~~~
 
 ## Option 2
