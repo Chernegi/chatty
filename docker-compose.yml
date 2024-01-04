@@ -14,7 +14,8 @@ services:
     restart: unless-stopped
 
   chatty:
-    build: ./
+    # build: ./
+    image: chernegi/chatty:v0.1.0
     environment:
       - OLLAMA_URL=http://ollamahost:11434
     depends_on: 
