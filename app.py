@@ -3,7 +3,7 @@ from streamlit_chat import message
 
 from chatty import Chatty
 
-st.set_page_config(page_title="Chatty")
+st.set_page_config(page_title="A cup of tea")
 
 
 def display_messages():
@@ -20,16 +20,15 @@ def process_input():
         user_text = st.session_state["user_input"].strip()
         with st.session_state["thinking_spinner"], st.spinner(
             f"I muse upon this"
-            ):
+        ):
             agent_text = st.session_state["assistant"].ask(user_text)
 
         st.session_state["messages"].append((user_text, True))
-        st.session_state["messages"].append((agent_text, False))    
+        st.session_state["messages"].append((agent_text, False))
 
 
 def page():
     st.header(
-        # "Sir Shakespeare's bot invites you to chat :sunglasses:"
         "Sir Shakespeare's bot invites you to chat",
         divider="rainbow",
     )
